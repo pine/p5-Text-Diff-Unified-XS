@@ -44,6 +44,7 @@
             "Test::Perl::Critic" : "1.03",
             "Test::Pod" : "1.51",
             "Test::Spellunker" : "v0.4.0",
+            "Text::Diff" : "1.44",
             "Version::Next" : "1.000"
          }
       },

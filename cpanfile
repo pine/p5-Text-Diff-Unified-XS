@@ -12,6 +12,7 @@ on develop => sub {
     requires 'Test::Pod', '1.51';
     requires 'Test::Spellunker', '0.4.0';
     requires 'Version::Next', '1.000';
+    requires 'Text::Diff', '1.44';
 };
 
 on configure => sub {
