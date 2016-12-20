@@ -6,6 +6,9 @@ Text::Diff::Unified::XS - It's new $module
 
     use Text::Diff::Unified::XS;
 
+    my $diff = diff 'file1.txt', 'file2.txt';
+    my $diff = diff \$string1, \$string2;
+
 # DESCRIPTION
 
 Text::Diff::Unified::XS is the fast [Text::Diff](https://metacpan.org/pod/Text::Diff) module implemented by XS.
