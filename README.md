@@ -10,7 +10,7 @@ Text::Diff::Unified::XS - It's new $module
 
 Text::Diff::Unified::XS is the fast [Text::Diff](https://metacpan.org/pod/Text::Diff) module implemented by XS.
 
-# LICENSE
+# BENCHMARK
 
         Benchmark: running PP, XS for at least 10 CPU seconds...
                         PP: 10 wallclock secs (10.73 usr +  0.05 sys = 10.78 CPU) @ 63.73/s (n=687)
@@ -18,6 +18,8 @@ Text::Diff::Unified::XS is the fast [Text::Diff](https://metacpan.org/pod/Text::
                  Rate   PP   XS
         PP 63.7/s   -- -84%
         XS  409/s 542%   --
+
+# LICENSE
 
 (The MIT license)
 
