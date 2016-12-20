@@ -1,6 +1,6 @@
 requires 'perl', '5.008001';
 
-on 'develop' => sub {
+on develop => sub {
     requires 'CPAN::Uploader', '0.103012';
     requires 'Minilla', '3.0.4';
     requires 'Perl::Critic', '1.125';
@@ -18,7 +18,7 @@ on configure => sub {
     requires 'Module::Build::XSUtil', '0.16';
 };
 
-on 'test' => sub {
+on test => sub {
     requires 'Test::More', '0.98';
     requires 'File::Slurp';
 };
