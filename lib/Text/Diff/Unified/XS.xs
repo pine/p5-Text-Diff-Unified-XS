@@ -42,7 +42,7 @@ PPCODE:
         while (sv_gets(tmp, fp_a, 0) != NULL) {
             std::string s = SvPV_nolen(tmp);
             s.erase(s.find_last_not_of("\n\r") + 1);
-            lines_a.push_back(std::move(s));
+            lines_a.push_back(s);
         }
         PerlIO_close(fp_a);
     }
@@ -52,7 +52,7 @@ PPCODE:
         while (sv_gets(tmp, fp_b, 0) != NULL) {
             std::string s = SvPV_nolen(tmp);
             s.erase(s.find_last_not_of("\n\r") + 1);
-            lines_b.push_back(std::move(s));
+            lines_b.push_back(s);
         }
         PerlIO_close(fp_b);
     }

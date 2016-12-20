@@ -9,7 +9,7 @@ sub new {
     return $class->SUPER::new(
         %args,
         c_source             => ['src'],
-        needs_compiler_cpp   => 11,
+        needs_compiler_cpp   => 1,
         generate_xshelper_h  => 'src/xshelper.h',
         generate_ppport_h    => 'src/ppport.h',
         extra_compiler_flags => ['-DPERL_EXT', '-Ivendor/dtl'],
