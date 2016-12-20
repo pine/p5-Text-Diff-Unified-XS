@@ -1,6 +1,6 @@
 # NAME
 
-Text::Diff::Unified::XS - It's new $module
+Text::Diff::Unified::XS - The fast Text::Diff module
 
 # SYNOPSIS
 
