@@ -1,0 +1,3 @@
+[submodule "vendor/dtl"]
+	path = vendor/dtl
+	url = https://github.com/cubicdaiya/dtl.git
