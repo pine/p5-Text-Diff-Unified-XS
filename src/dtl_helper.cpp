@@ -19,3 +19,16 @@ std::string diff_sequence(
 
     return out.str();
 }
+
+void split_lines(
+        const char *s,
+        std::vector<std::string> &lines
+        )
+{
+    std::istringstream in(s);
+
+    std::string line;
+    while (std::getline(in, line)) {
+        lines.push_back(line);
+    }
+}

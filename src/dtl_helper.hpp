@@ -9,4 +9,9 @@ std::string diff_sequence(
         const std::vector<std::string> &
         );
 
+void split_lines(
+        const char *s,
+        std::vector<std::string> &lines
+        );
+
 #endif

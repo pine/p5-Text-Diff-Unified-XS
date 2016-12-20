@@ -9,7 +9,16 @@ use Test::More;
 
 use Text::Diff::Unified::XS;
 
-subtest basic => sub {
+subtest 'from string' => sub {
+    my $data_dir = File::Spec->catfile(dirname(__FILE__), 'data');
+    my $data_a   = read_file(File::Spec->catfile($data_dir, 'a.txt'));
+    my $data_b   = read_file(File::Spec->catfile($data_dir, 'b.txt'));
+	my $diff_str = read_file(File::Spec->catfile($data_dir, 'diff.txt'));
+
+    is diff(\$data_a, \$data_b), $diff_str;
+};
+
+subtest 'from file' => sub {
     my $data_dir = File::Spec->catfile(dirname(__FILE__), 'data');
     my $file_a   = File::Spec->catfile($data_dir, 'a.txt');
     my $file_b   = File::Spec->catfile($data_dir, 'b.txt');
