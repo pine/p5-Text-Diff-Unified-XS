@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/pine/p5-Text-Diff-Unified-XS.svg?branch=master)](https://travis-ci.org/pine/p5-Text-Diff-Unified-XS)
 # NAME
 
 Text::Diff::Unified::XS - The fast Text::Diff module
