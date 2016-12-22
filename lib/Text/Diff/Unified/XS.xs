@@ -16,54 +16,30 @@ extern "C" {
 
 #include <vector>
 #include <string>
-#include "dtl_helper.hpp"
+
+#include "diff_helper.hpp"
+#include "io_helper.hpp"
 
 MODULE = Text::Diff::Unified::XS    PACKAGE = Text::Diff::Unified::XS
 
 PROTOTYPES: DISABLE
 
 void
-diff(...)
+_diff_by_strings(...)
 PROTOTYPE: $$
 PPCODE:
 {
     std::vector<std::string> lines_a;
     std::vector<std::string> lines_b;
 
-    if (SvROK(ST(0)) && SvROK(ST(1))) {
-        const char *data_a = SvPV_nolen(SvRV(ST(0)));
-        const char *data_b = SvPV_nolen(SvRV(ST(1)));
-        split_lines(data_a, lines_a);
-        split_lines(data_b, lines_b);
+    if (SvROK(ST(0))) {
+        const char *data = SvPV_nolen(SvRV(ST(0)));
+        split_lines(data, lines_a);
     }
 
-    else {
-        SV *fname_a = ST(0);
-        SV *fname_b = ST(1);
-        char *fname_a_pv = SvPV_nolen(fname_a);
-        char *fname_b_pv = SvPV_nolen(fname_b);
-
-        SV *tmp = newSVpvs_flags("", SVs_TEMP);
-
-        PerlIO *fp_a = PerlIO_open(fname_a_pv, "r");
-        if (fp_a != NULL) {
-            while (sv_gets(tmp, fp_a, 0) != NULL) {
-                std::string s = SvPV_nolen(tmp);
-                s.erase(s.find_last_not_of("\n\r") + 1);
-                lines_a.push_back(s);
-            }
-            PerlIO_close(fp_a);
-        }
-
-        PerlIO *fp_b = PerlIO_open(fname_b_pv, "r");
-        if (fp_b != NULL) {
-            while (sv_gets(tmp, fp_b, 0) != NULL) {
-                std::string s = SvPV_nolen(tmp);
-                s.erase(s.find_last_not_of("\n\r") + 1);
-                lines_b.push_back(s);
-            }
-            PerlIO_close(fp_b);
-        }
+    if (SvROK(ST(1))) {
+        const char *data = SvPV_nolen(SvRV(ST(1)));
+        split_lines(data, lines_b);
     }
 
     std::string diff_str = diff_sequence(lines_a, lines_b);
@@ -72,3 +48,25 @@ PPCODE:
     XPUSHs(diff_sv);
     XSRETURN(1);
 }
+
+void
+_diff_by_files(...)
+PROTOTYPE: $$
+PPCODE:
+{
+    std::vector<std::string> lines_a;
+    std::vector<std::string> lines_b;
+
+    const char *fname_a = SvPV_nolen(ST(0));
+    const char *fname_b = SvPV_nolen(ST(1));
+
+    read_lines(fname_a, lines_a);
+    read_lines(fname_b, lines_b);
+
+    std::string diff_str = diff_sequence(lines_a, lines_b);
+    SV *diff_sv = sv_2mortal(newSVpv(diff_str.c_str(), 0));
+
+    XPUSHs(diff_sv);
+    XSRETURN(1);
+}
+

@@ -37,6 +37,7 @@ my %args = (
     test_requires => {
         'File::Slurp' => '0',
         'Test::More' => '0.98',
+        'Time::Strptime' => '1.00',
     },
 
     name            => 'Text-Diff-Unified-XS',

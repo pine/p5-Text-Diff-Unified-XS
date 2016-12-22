@@ -56,7 +56,8 @@
       "test" : {
          "requires" : {
             "File::Slurp" : "0",
-            "Test::More" : "0.98"
+            "Test::More" : "0.98",
+            "Time::Strptime" : "1.00"
          }
       }
    },

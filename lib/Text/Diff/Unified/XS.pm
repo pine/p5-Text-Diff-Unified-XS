@@ -11,6 +11,24 @@ our @EXPORT = qw/diff/;
 use XSLoader;
 XSLoader::load(__PACKAGE__, $VERSION);
 
+sub diff {
+    if (ref $_[0] eq 'SCALAR' && ref $_[1] eq 'SCALAR') {
+        return _diff_by_strings(@_);
+    }
+
+    my $diff = _diff_by_files(@_);
+    return _make_diff_header(@_) . $diff if length $diff > 0;
+    return $diff;
+}
+
+sub _make_diff_header {
+    my @mtimes = map { [stat($_)]->[9] } @_;
+    return join('',
+        '--- ', $_[0], "\t" . localtime($mtimes[0]), "\n",
+        '+++ ', $_[1], "\t" . localtime($mtimes[1]), "\n",
+    );
+}
+
 1;
 __END__
 
