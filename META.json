@@ -50,7 +50,7 @@
       },
       "runtime" : {
          "requires" : {
-            "perl" : "5.008001"
+            "perl" : "5.010000"
          }
       },
       "test" : {
@@ -73,7 +73,7 @@
          "web" : "https://github.com/pine/p5-Text-Diff-Unified-XS"
       }
    },
-   "version" : "0.01",
+   "version" : "0.02",
    "x_authority" : "cpan:PINE",
    "x_contributors" : [
       "Pine Mizune <pinemz@gmail.com>"

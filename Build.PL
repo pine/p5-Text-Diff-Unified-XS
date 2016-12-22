@@ -22,7 +22,7 @@ my %args = (
     },
 
     requires => {
-        'perl' => '5.008001',
+        'perl' => '5.010000',
     },
 
     recommends => {
