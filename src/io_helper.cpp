@@ -1,10 +1,24 @@
-#include <vector>
-#include <sstream>
+#ifdef __cplusplus
+extern "C" {
+#endif
 
+#define PERL_NO_GET_CONTEXT /* we want efficiency */
 #include <EXTERN.h>
 #include <perl.h>
 #include <perlio.h>
 #include <XSUB.h>
+
+#ifdef __cplusplus
+} /* extern "C" */
+#endif
+
+#define NEED_newSVpvn_flags
+#include "ppport.h"
+#undef do_open
+#undef do_close
+
+#include <vector>
+#include <sstream>
 
 void split_lines(
         const char *s,

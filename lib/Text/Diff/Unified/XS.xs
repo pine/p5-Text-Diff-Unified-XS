@@ -20,6 +20,16 @@ extern "C" {
 #include "diff_helper.hpp"
 #include "io_helper.hpp"
 
+/*
+ * XXX: fix compiler errors
+ * `error: declaration of 'Perl___notused' has a different language linkage`
+ */
+#ifdef __cplusplus
+#define dNOOP (void)0
+#else
+#define dNOOP extern int Perl___notused(void)
+#endif
+
 MODULE = Text::Diff::Unified::XS    PACKAGE = Text::Diff::Unified::XS
 
 PROTOTYPES: DISABLE
