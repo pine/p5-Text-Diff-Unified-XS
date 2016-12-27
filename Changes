@@ -2,6 +2,9 @@ Revision history for Perl extension Text-Diff-Unified-XS
 
 {{$NEXT}}
 
+0.03 2016-12-27T06:22:42Z
+    - fix compile errors on some environments
+
 0.02 2016-12-22T04:56:20Z
     - add file details into diff header
 
