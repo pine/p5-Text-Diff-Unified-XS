@@ -73,7 +73,7 @@
          "web" : "https://github.com/pine/p5-Text-Diff-Unified-XS"
       }
    },
-   "version" : "0.04",
+   "version" : "0.05",
    "x_authority" : "cpan:PINE",
    "x_contributors" : [
       "Pine Mizune <pinemz@gmail.com>"
