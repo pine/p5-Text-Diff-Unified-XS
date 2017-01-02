@@ -62,7 +62,7 @@ Text::Diff::Unified::XS is the fast L<Text::Diff> module implemented by XS.
 
 (The MIT license)
 
-Copyright (c) 2016 Pine Mizune
+Copyright (c) 2016-2017 Pine Mizune
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
