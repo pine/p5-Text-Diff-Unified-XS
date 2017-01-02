@@ -1,7 +1,7 @@
 {
    "abstract" : "The fast Text::Diff module",
    "author" : [
-      "Pine Mizune"
+      "-2017 Pine Mizune"
    ],
    "dynamic_config" : 0,
    "generated_by" : "Minilla/v3.0.7, CPAN::Meta::Converter version 2.150010",
@@ -73,7 +73,7 @@
          "web" : "https://github.com/pine/p5-Text-Diff-Unified-XS"
       }
    },
-   "version" : "0.03",
+   "version" : "0.04",
    "x_authority" : "cpan:PINE",
    "x_contributors" : [
       "Pine Mizune <pinemz@gmail.com>"
