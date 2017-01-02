@@ -1,24 +1,4 @@
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#define PERL_NO_GET_CONTEXT /* we want efficiency */
-#include <EXTERN.h>
-#include <perl.h>
-#include <perlio.h>
-#include <XSUB.h>
-
-#ifdef __cplusplus
-} /* extern "C" */
-#endif
-
-#define NEED_newSVpvn_flags
-#include "ppport.h"
-#undef do_open
-#undef do_close
-
-#include <vector>
-#include <sstream>
+#include "io_helper.hpp"
 
 void split_lines(
         const char *s,
@@ -34,6 +14,7 @@ void split_lines(
 }
 
 void read_lines(
+    pTHX_
     const char *fname,
     std::vector<std::string> &lines
     )
@@ -41,7 +22,7 @@ void read_lines(
     PerlIO *fp = PerlIO_open(fname, "r");
 
     if (fp != NULL) {
-        SV *tmp = sv_2mortal(newSVpv("", 0));
+        SV *tmp = newSVpvs_flags("", SVs_TEMP);
         while (sv_gets(tmp, fp, 0) != NULL) {
             std::string s = SvPV_nolen(tmp);
             s.erase(s.find_last_not_of("\n\r") + 1);

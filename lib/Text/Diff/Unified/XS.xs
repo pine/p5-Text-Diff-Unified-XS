@@ -70,8 +70,8 @@ PPCODE:
     const char *fname_a = SvPV_nolen(ST(0));
     const char *fname_b = SvPV_nolen(ST(1));
 
-    read_lines(fname_a, lines_a);
-    read_lines(fname_b, lines_b);
+    read_lines(aTHX_ fname_a, lines_a);
+    read_lines(aTHX_ fname_b, lines_b);
 
     std::string diff_str = diff_sequence(lines_a, lines_b);
     SV *diff_sv = sv_2mortal(newSVpv(diff_str.c_str(), 0));
