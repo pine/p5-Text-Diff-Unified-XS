@@ -41,7 +41,7 @@ void read_lines(
     PerlIO *fp = PerlIO_open(fname, "r");
 
     if (fp != NULL) {
-        SV *tmp = newSVpvs_flags("", SVs_TEMP);
+        SV *tmp = sv_2mortal(newSVpv("", 0));
         while (sv_gets(tmp, fp, 0) != NULL) {
             std::string s = SvPV_nolen(tmp);
             s.erase(s.find_last_not_of("\n\r") + 1);
