@@ -49,7 +49,38 @@ Text::Diff::Unified::XS - The fast Text::Diff module
 
 Text::Diff::Unified::XS is the fast L<Text::Diff> module implemented by XS.
 
+=head1 METHODS
+
+Please be careful that, the module supports only unified format.
+
+	@@ -2,13 +2,13 @@
+	 2
+	 3
+	 4
+	-5d
+	+5a
+	 6
+	 7
+	 8
+	 9
+	+9a
+	 10
+	 11
+	-11d
+	 12
+	 13
+
+=head2 C<diff($file_a, $file_b)>
+
+Generate the difference between C<$file_a> and C<$file_b> in unified format.
+
+=head2 C<diff(\$string_a, \$string_b)>
+
+Generate the difference between C<\$string_a> and C<\$string_b> in unified format.
+
 =head1 BENCHMARK
+
+Text::Diff::Unified::XS is about 500 % faster than Text::Diff.
 
 	Benchmark: running PP, XS for at least 10 CPU seconds...
 			PP: 10 wallclock secs (10.73 usr +  0.05 sys = 10.78 CPU) @ 63.73/s (n=687)
