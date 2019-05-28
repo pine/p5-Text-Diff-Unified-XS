@@ -1,5 +1,4 @@
 language: perl
-sudo: false
 perl:
   - "5.10"
   - "5.12"
@@ -11,6 +10,16 @@ perl:
   - "5.24"
   - "5.26"
   - "5.28"
+  - "5.30"
+  
+before_install:
+  - git clone git://github.com/travis-perl/helpers ~/travis-perl-helpers
+  - source ~/travis-perl-helpers/init
+  - build-perl
+  - perl -V
+
+install:
+  - cpan-install --deps
 
 notifications:
   slack:
