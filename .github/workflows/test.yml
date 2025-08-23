@@ -1,0 +1,35 @@
+name: test
+
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        perl-version:
+          - "5.10"
+          - "5.12"
+          - "5.14"
+          - "5.16"
+          - "5.18"
+          - "5.20"
+          - "5.22"
+          - "5.24"
+          - "5.26"
+          - "5.28"
+          - "5.30"
+    name: Perl ${{ matrix.perl-version }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          submodules: true
+      - name: Setup perl
+        uses: shogo82148/actions-setup-perl@5796a908661aa68fc0a5b8f55c6791af2376d72e # v1.35.0
+        with:
+          perl-version: ${{ matrix.perl-version }}
+      - name: Install dependencies
+        run: cpanm -nq --installdeps .
+      - name: Build module
+        run: cpanm -nv .
+      - name: Run test
+        run: prove -lvr t
