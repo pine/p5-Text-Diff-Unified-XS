@@ -74,7 +74,7 @@
          "web" : "https://github.com/pine/p5-Text-Diff-Unified-XS"
       }
    },
-   "version" : "0.09",
+   "version" : "0.10",
    "x_authority" : "cpan:PINE",
    "x_serialization_backend" : "JSON::PP version 4.02",
    "x_static_install" : 0
