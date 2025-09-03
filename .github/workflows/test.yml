@@ -1,9 +1,17 @@
 name: test
 
-on: [push, pull_request]
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 9 1 * *'
+
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  test:
     strategy:
       matrix:
         perl-version:
@@ -24,7 +32,9 @@ jobs:
           - "5.38"
           - "5.40"
           - "5.42"
+    runs-on: ubuntu-latest
     name: Perl ${{ matrix.perl-version }}
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v5
         with:
